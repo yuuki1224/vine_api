@@ -1,6 +1,5 @@
 # VineApi
-
-TODO: Write a gem description
+This repository is ruby-gem for vine api.
 
 ## Installation
 

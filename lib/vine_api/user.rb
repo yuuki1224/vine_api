@@ -11,28 +11,28 @@ module VineApi
       @key = data['key'] 
     end
 
-    def profile
-      get('/users/me')
+    def profile(user_id = nil)
+      if user_id
+        get("/users/profiles/#{user_id}")
+      else
+        get('/users/me')
+      end
     end
 
-    def timeline(user_id)
-      get("/timelines/users/#{user_id}")
+    def timeline(user_id, page = 1)
+      get("/timelines/users/#{user_id}?page=#{page}")
     end
 
-    def tag(tag)
-      get("/timelines/tags/#{tag}")
+    def tag(tag, page = 1)
+      get("/timelines/tags/#{tag}?page=#{page}")
     end
 
     def notifications(user_id)
       get("/users/#{user_id}/pendingNotificationsCount")
     end
 
-    def popular(user_id = nil)
-      if user_id
-        get("/users/profiles/#{user_id}")
-      else
-        get('/users/me')
-      end
+    def popular(page = 1)
+      get("/timelines/popular?page=#{page}")
     end
 
     def logout
